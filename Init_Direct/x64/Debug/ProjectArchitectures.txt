@@ -1,0 +1,1 @@
+C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\Init_Direct\Init_Direct.vcxproj;x64

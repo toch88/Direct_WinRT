@@ -18,7 +18,7 @@ public:
 
 	// Inherited via IFrameworkView
 	virtual void Initialize(CoreApplicationView ^applicationView)
-	{
+	{	//declare the generic event for OnActive function (callback)
 		applicationView->Activated += ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
 		
 	}
@@ -28,8 +28,8 @@ public:
 	virtual void Uninitialize(){}
 
 	void OnActivated(CoreApplicationView^ CoreAppView, IActivatedEventArgs^ Args) {
-		Args->ToString();
-		CoreWindow^ Window = CoreWindow::GetForCurrentThread();
+		
+		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
 		Window->Activate();
 		
 	}
