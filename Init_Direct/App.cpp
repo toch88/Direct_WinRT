@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Game.h"
 #pragma region using_namespace
 
 using namespace Windows::ApplicationModel;
@@ -15,6 +16,7 @@ using namespace Platform;
 
 ref class App sealed :public IFrameworkView {	
 	bool WindowClosed;
+	CGame Game;
 public:
 		
 	
@@ -25,6 +27,7 @@ public:
 		CoreApplication::Suspending += ref new EventHandler<SuspendingEventArgs^>(this, &App::Suspending);
 		CoreApplication::Resuming += ref new EventHandler<Object^>(this, &App::Resuming);
 		WindowClosed = false;
+		
 		
 	}
 	virtual void SetWindow(CoreWindow ^window){
@@ -37,10 +40,14 @@ public:
 	}
 	virtual void Load(String ^entryPoint){}
 	virtual void Run(){
+		Game.Initialize();
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
 
 		while (!WindowClosed) {
 			Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneIfPresent);
+
+			Game.Update();
+			Game.Render();
 		}
 		
 	}
