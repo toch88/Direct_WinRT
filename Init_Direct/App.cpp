@@ -25,6 +25,9 @@ public:
 	}
 	virtual void SetWindow(CoreWindow ^window){
 		window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::PointerPressed);
+		window->KeyDown += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, App::KeyDown);
+		window->KeyUp += ref new Windows::Foundation::TypedEventHandler<CoreWindow ^, KeyEventArgs ^>(this, &App::KeyUp);
+
 	}
 	virtual void Load(String ^entryPoint){}
 	virtual void Run(){
@@ -42,6 +45,15 @@ public:
 		
 		MessageDialog Dialog("Okienko {1}","Notice");
 		Dialog.ShowAsync();
+	}
+
+	void KeyDown(CoreWindow^ Window, KeyEventArgs^ Args) {
+		if (Args->VirtualKey == VirtualKey::A) {
+
+		}
+	}
+	void  KeyUp(CoreWindow^ Window, KeyEventArgs^ Args) {
+
 	}
 
 };
