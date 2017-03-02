@@ -23,7 +23,9 @@ public:
 		applicationView->Activated += ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
 		
 	}
-	virtual void SetWindow(CoreWindow ^window){}
+	virtual void SetWindow(CoreWindow ^window){
+		window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::PointerPressed);
+	}
 	virtual void Load(String ^entryPoint){}
 	virtual void Run(){
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
@@ -31,11 +33,15 @@ public:
 	}
 	virtual void Uninitialize(){}
 
-	void OnActivated(CoreApplicationView^ CoreAppView, IActivatedEventArgs^ Args) {
-		
+	void OnActivated(CoreApplicationView^ CoreAppView, IActivatedEventArgs^ Args) {		
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
-		Window->Activate();
+		Window->Activate();		
+	}
+
+	void PointerPressed(CoreWindow^ Window, PointerEventArgs^ Args) {
 		
+		MessageDialog Dialog("Okienko {1}","Notice");
+		Dialog.ShowAsync();
 	}
 
 };

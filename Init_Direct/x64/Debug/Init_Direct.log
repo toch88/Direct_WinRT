@@ -1,2 +1,3 @@
-﻿  pch.cpp
-c:\users\toch\desktop\win2d\direct2d\init_direct\init_direct\pch.h(16): fatal error C1114: 'c:\windows\microsoft.net\framework\v4.0.30319\system.dll': WinRT does not support #using of a managed assembly
+﻿  App.cpp
+  Init_Direct.vcxproj -> C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\x64\Debug\Init_Direct\Init_Direct.exe
+  Init_Direct.vcxproj -> C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\x64\Debug\Init_Direct\Init_Direct.pdb (Partial PDB)

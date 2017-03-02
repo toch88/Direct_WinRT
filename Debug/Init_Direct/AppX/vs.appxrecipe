@@ -27,13 +27,13 @@
     <AppXManifest Include="C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\Debug\Init_Direct\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-01T18:48:10.280</Modified>
+      <Modified>2017-03-02T17:55:31.902</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\Debug\Init_Direct\Init_Direct.exe">
       <PackagePath>Init_Direct.exe</PackagePath>
-      <Modified>2017-03-01T19:16:30.073</Modified>
+      <Modified>2017-03-02T17:55:31.638</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\Debug\Init_Direct\Init_Direct.winmd">
       <PackagePath>Init_Direct.winmd</PackagePath>
@@ -80,7 +80,7 @@
     <AppxPackagedFile Include="C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\Debug\Init_Direct\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-01T18:48:10.078</Modified>
+      <Modified>2017-03-02T17:55:31.839</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
