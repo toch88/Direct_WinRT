@@ -14,6 +14,7 @@ using namespace Platform;
 
 
 ref class App sealed :public IFrameworkView {	
+	bool WindowClosed;
 public:
 		
 	
@@ -23,10 +24,12 @@ public:
 		applicationView->Activated += ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
 		CoreApplication::Suspending += ref new EventHandler<SuspendingEventArgs^>(this, &App::Suspending);
 		CoreApplication::Resuming += ref new EventHandler<Object^>(this, &App::Resuming);
-
+		WindowClosed = false;
 		
 	}
 	virtual void SetWindow(CoreWindow ^window){
+		
+		window->Closed += ref new TypedEventHandler<CoreWindow^, CoreWindowEventArgs^>(this, &App::Close);
 		window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::PointerPressed);
 		window->KeyDown += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &App::KeyDown);
 		window->KeyUp += ref new Windows::Foundation::TypedEventHandler<CoreWindow ^, KeyEventArgs ^>(this, &App::KeyUp);
@@ -35,13 +38,21 @@ public:
 	virtual void Load(String ^entryPoint){}
 	virtual void Run(){
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
-		Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit);
+
+		while (!WindowClosed) {
+			Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneIfPresent);
+		}
+		
 	}
 	virtual void Uninitialize(){}
 
 	void OnActivated(CoreApplicationView^ CoreAppView, IActivatedEventArgs^ Args) {		
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
 		Window->Activate();		
+	}
+
+	void Close(CoreWindow^ window, CoreWindowEventArgs^ Args) {
+		WindowClosed = true;
 	}
 
 	void Suspending(Object^ Sender, SuspendingEventArgs^ Args) {
@@ -56,11 +67,12 @@ public:
 		
 		MessageDialog Dialog("Okienko {1}","Notice");
 		Dialog.ShowAsync();
+		
 	}
 
 	void KeyDown(CoreWindow^ Window, KeyEventArgs^ Args) {
-		if (Args->VirtualKey == VirtualKey::A) {
-
+		if (Args->VirtualKey == VirtualKey::Escape) {
+			WindowClosed = true;
 		}
 	}
 	void  KeyUp(CoreWindow^ Window, KeyEventArgs^ Args) {
