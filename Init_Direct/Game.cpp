@@ -51,6 +51,22 @@ void CGame::Initialize()
 	dev->CreateRenderTargetView(backbuffer.Get(), nullptr, &rendertarget);	
 }
 
+void CGame::InitGraphics()
+{
+	VERTEX ourVertex[] = {
+		{0.0f, 0.5f, 0.0f},
+		{0.45f, -0.5f, 0.0f},
+		{-0.45f, -0.5f, 0.0f},
+	};
+
+	D3D11_BUFFER_DESC bd = { 0 };
+	bd.ByteWidth = sizeof(VERTEX)*ARRAYSIZE(ourVertex);
+	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+
+	D3D11_SUBRESOURCE_DATA srd = { ourVertex, 0 , 0 };
+	dev->CreateBuffer(&bd, &srd, &vertexbuffer);
+}
+
 void CGame::Update()
 {
 	
