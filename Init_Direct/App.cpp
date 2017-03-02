@@ -21,11 +21,12 @@ public:
 	virtual void Initialize(CoreApplicationView ^applicationView)
 	{	//declare the generic event for OnActive function (callback)
 		applicationView->Activated += ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
+		CoreApplication::Suspending += ref new EventHandler<SuspendingEventArgs^>(this, &App::Suspending);
 		
 	}
 	virtual void SetWindow(CoreWindow ^window){
 		window->PointerPressed += ref new TypedEventHandler<CoreWindow^, PointerEventArgs^>(this, &App::PointerPressed);
-		window->KeyDown += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, App::KeyDown);
+		window->KeyDown += ref new TypedEventHandler<CoreWindow^, KeyEventArgs^>(this, &App::KeyDown);
 		window->KeyUp += ref new Windows::Foundation::TypedEventHandler<CoreWindow ^, KeyEventArgs ^>(this, &App::KeyUp);
 
 	}
@@ -39,6 +40,10 @@ public:
 	void OnActivated(CoreApplicationView^ CoreAppView, IActivatedEventArgs^ Args) {		
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
 		Window->Activate();		
+	}
+
+	void Suspending(Object^ Sender, SuspendingEventArgs^ Args) {
+
 	}
 
 	void PointerPressed(CoreWindow^ Window, PointerEventArgs^ Args) {
@@ -55,6 +60,8 @@ public:
 	void  KeyUp(CoreWindow^ Window, KeyEventArgs^ Args) {
 
 	}
+
+	
 
 };
 
