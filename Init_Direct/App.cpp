@@ -22,6 +22,8 @@ public:
 	{	//declare the generic event for OnActive function (callback)
 		applicationView->Activated += ref new TypedEventHandler<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
 		CoreApplication::Suspending += ref new EventHandler<SuspendingEventArgs^>(this, &App::Suspending);
+		CoreApplication::Resuming += ref new EventHandler<Object^>(this, &App::Resuming);
+
 		
 	}
 	virtual void SetWindow(CoreWindow ^window){
@@ -43,6 +45,10 @@ public:
 	}
 
 	void Suspending(Object^ Sender, SuspendingEventArgs^ Args) {
+
+	}
+
+	void Resuming(Object^ Sender, Object^ Args) {
 
 	}
 
