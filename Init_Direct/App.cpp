@@ -12,6 +12,7 @@ using namespace Windows::Graphics::Display;
 using namespace Platform;
 
 
+
 ref class App sealed :public IFrameworkView {	
 public:
 		

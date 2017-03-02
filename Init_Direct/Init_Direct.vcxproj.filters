@@ -47,6 +47,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Init_Direct_TemporaryKey.pfx" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
