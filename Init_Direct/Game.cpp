@@ -46,11 +46,9 @@ void CGame::Initialize()
 		&scd,
 		nullptr,
 		&swapChain);
-
-
-
-
-	
+	ComPtr<ID3D11Texture2D> backbuffer;
+	swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &backbuffer);
+	dev->CreateRenderTargetView(backbuffer.Get(), nullptr, &rendertarget);	
 }
 
 void CGame::Update()
@@ -60,5 +58,11 @@ void CGame::Update()
 
 void CGame::Render()
 {
-	
+	devContext->OMSetRenderTargets(1, rendertarget.GetAddressOf(), nullptr);
+
+	float color[4] = { 0.8f, 0.2f, 0.4f, 1.0f };
+	devContext->ClearRenderTargetView(rendertarget.Get(), color);
+
+	swapChain->Present(1, 0);
+
 }

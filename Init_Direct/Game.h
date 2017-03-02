@@ -9,6 +9,7 @@ public:
 	ComPtr<ID3D11Device1> dev;
 	ComPtr<ID3D11DeviceContext1> devContext;
 	ComPtr<IDXGISwapChain1> swapChain;
+	ComPtr<ID3D11RenderTargetView> rendertarget;
 
 
 	void Initialize();
