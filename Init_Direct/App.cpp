@@ -12,10 +12,10 @@ using namespace Windows::Graphics::Display;
 using namespace Platform;
 
 
-ref class App sealed :public IFrameworkView {
+ref class App sealed :public IFrameworkView {	
 public:
 		
-
+	
 	// Inherited via IFrameworkView
 	virtual void Initialize(CoreApplicationView ^applicationView)
 	{	//declare the generic event for OnActive function (callback)
@@ -24,7 +24,10 @@ public:
 	}
 	virtual void SetWindow(CoreWindow ^window){}
 	virtual void Load(String ^entryPoint){}
-	virtual void Run(){}
+	virtual void Run(){
+		CoreWindow^ Window = CoreWindow::GetForCurrentThread(); //return the pointer to Window 
+		Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit);
+	}
 	virtual void Uninitialize(){}
 
 	void OnActivated(CoreApplicationView^ CoreAppView, IActivatedEventArgs^ Args) {

@@ -33,7 +33,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\x64\Debug\Init_Direct\Init_Direct.exe">
       <PackagePath>Init_Direct.exe</PackagePath>
-      <Modified>2017-03-01T19:40:25.662</Modified>
+      <Modified>2017-03-02T16:50:48.471</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\toch\Desktop\WIN2D\Direct2D\Init_Direct\x64\Debug\Init_Direct\Init_Direct.winmd">
       <PackagePath>Init_Direct.winmd</PackagePath>
